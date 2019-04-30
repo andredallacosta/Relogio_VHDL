@@ -1,0 +1,52 @@
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.all;
+USE IEEE.std_logic_arith.all;
+USE IEEE.std_logic_unsigned.all;
+
+ENTITY Reloginho is
+	port(
+		clock, reset, comeco, segundos: in std_logic := '0';
+		Saida: out std_logic_vector(41 downto 0)
+	);
+end Reloginho;
+
+architecture arch_Reloginho of Reloginho is
+signal Ain, Bin, Cin, Din, Ein, Fin: std_logic_vector(3 downto 0) := "0000";
+
+component Contador_Sincrono_Dividido
+	port(
+		reset: in std_logic;
+		clock, comeco: in std_logic;
+		Ain, Bin, Cin, Din, Ein, Fin: std_LOGIC_VECTOR(3 downto 0);
+		Q0, Q1, Q2, Q3, Q4, Q5: out std_logic_vector(6 downto 0)
+	);
+end component;
+
+component Definir_TIME
+port(
+	clock, pushador, reset: in std_logic;
+	Q0, Q1: out std_logic_vector(3 downto 0)
+	);
+end component;
+
+begin
+
+process(reset)
+begin
+	if(reset = '1')then
+		Ain <= "0000";
+		Bin <= "0000";
+		Cin <= "0000";
+		Din <= "0000";
+		Ein <= "0000";
+		Fin <= "0000";
+	end if;
+end process;
+
+TEMPOSEG: Definir_TIME
+	port map(clock => clock, pushador => segundos, reset => reset, Q0 => Ain, Q1 => Bin);
+Contador: Contador_Sincrono_Dividido
+	port map(clock => clock, comeco => comeco, reset => reset, Ain => Ain, Bin => Bin, Cin => Cin, Din => Din, Ein => Ein, Fin => Fin, Q0 => Saida(6 downto 0), Q1 => Saida(13 downto 7), Q2 => Saida(20 downto 14), Q3 => Saida(27 downto 21), Q4 => Saida(34 downto 28), Q5 => Saida(41 downto 35));
+	
+end arch_Reloginho;
+		

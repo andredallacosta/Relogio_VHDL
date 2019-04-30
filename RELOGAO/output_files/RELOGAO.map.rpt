@@ -1,0 +1,934 @@
+Analysis & Synthesis report for RELOGAO
+Thu Jul 26 14:00:39 2018
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |RELOGAO|Display_LCD:lCdzinho|next_command
+  9. State Machine - |RELOGAO|Display_LCD:lCdzinho|state
+ 10. User-Specified and Inferred Latches
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: Display_LCD:lCdzinho
+ 16. Port Connectivity Checks: "Contador_Sincrono_Dividido:Contador|Divisor_Freq:Divisor"
+ 17. Port Connectivity Checks: "Definir_TIME:TEMPOHORA"
+ 18. Port Connectivity Checks: "Definir_TIME:TEMPOMIN"
+ 19. Port Connectivity Checks: "Definir_TIME:TEMPOSEG|Divisor_Freq:DIV"
+ 20. Port Connectivity Checks: "Definir_TIME:TEMPOSEG"
+ 21. Port Connectivity Checks: "Divisor_Freq:ClockAla"
+ 22. Port Connectivity Checks: "Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:GMT"
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Jul 26 14:00:39 2018           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; RELOGAO                                         ;
+; Top-level Entity Name              ; RELOGAO                                         ;
+; Family                             ; Cyclone II                                      ;
+; Total logic elements               ; 898                                             ;
+;     Total combinational functions  ; 871                                             ;
+;     Dedicated logic registers      ; 243                                             ;
+; Total registers                    ; 243                                             ;
+; Total pins                         ; 106                                             ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; RELOGAO            ; RELOGAO            ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                   ;
++----------------------------------+-----------------+-----------------------+---------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type             ; File Name with Absolute Path                                                                      ; Library ;
++----------------------------------+-----------------+-----------------------+---------------------------------------------------------------------------------------------------+---------+
+; Definir_TIME.vhd                 ; yes             ; User VHDL File        ; C:/Users/Aluno/Desktop/André Dalla Costa e Matheus Lindino/RELOGAO/Definir_TIME.vhd               ;         ;
+; RELOGAO.vhd                      ; yes             ; User VHDL File        ; C:/Users/Aluno/Desktop/André Dalla Costa e Matheus Lindino/RELOGAO/RELOGAO.vhd                    ;         ;
+; Divisor_Freq.vhd                 ; yes             ; User VHDL File        ; C:/Users/Aluno/Desktop/André Dalla Costa e Matheus Lindino/RELOGAO/Divisor_Freq.vhd               ;         ;
+; display_7.vhd                    ; yes             ; User VHDL File        ; C:/Users/Aluno/Desktop/André Dalla Costa e Matheus Lindino/RELOGAO/display_7.vhd                  ;         ;
+; Contador_Sincrono_Dividido.vhd   ; yes             ; User VHDL File        ; C:/Users/Aluno/Desktop/André Dalla Costa e Matheus Lindino/RELOGAO/Contador_Sincrono_Dividido.vhd ;         ;
+; display_lcd.vhd                  ; yes             ; Auto-Found VHDL File  ; C:/Users/Aluno/Desktop/André Dalla Costa e Matheus Lindino/RELOGAO/display_lcd.vhd                ;         ;
+; conversor_lcd.vhd                ; yes             ; Auto-Found VHDL File  ; C:/Users/Aluno/Desktop/André Dalla Costa e Matheus Lindino/RELOGAO/conversor_lcd.vhd              ;         ;
+; conversor_ascii.vhd              ; yes             ; Auto-Found VHDL File  ; C:/Users/Aluno/Desktop/André Dalla Costa e Matheus Lindino/RELOGAO/conversor_ascii.vhd            ;         ;
++----------------------------------+-----------------+-----------------------+---------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 898   ;
+;                                             ;       ;
+; Total combinational functions               ; 871   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 450   ;
+;     -- 3 input functions                    ; 155   ;
+;     -- <=2 input functions                  ; 266   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 775   ;
+;     -- arithmetic mode                      ; 96    ;
+;                                             ;       ;
+; Total registers                             ; 243   ;
+;     -- Dedicated logic registers            ; 243   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 106   ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+; Maximum fan-out node                        ; reset ;
+; Maximum fan-out                             ; 203   ;
+; Total fan-out                               ; 3757  ;
+; Average fan-out                             ; 3.08  ;
++---------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                               ;
++------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node               ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                         ; Library Name ;
++------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------+--------------+
+; |RELOGAO                                 ; 871 (237)         ; 243 (4)      ; 0           ; 0            ; 0       ; 0         ; 106  ; 0            ; |RELOGAO                                                                    ; work         ;
+;    |Contador_Sincrono_Dividido:Contador| ; 262 (206)         ; 90 (49)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Contador_Sincrono_Dividido:Contador                                ; work         ;
+;       |Divisor_Freq:Divisor|             ; 56 (56)           ; 41 (41)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Contador_Sincrono_Dividido:Contador|Divisor_Freq:Divisor           ; work         ;
+;    |Definir_TIME:TEMPOHORA|              ; 58 (17)           ; 55 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Definir_TIME:TEMPOHORA                                             ; work         ;
+;       |Divisor_Freq:DIV|                 ; 41 (41)           ; 39 (39)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Definir_TIME:TEMPOHORA|Divisor_Freq:DIV                            ; work         ;
+;    |Definir_TIME:TEMPOMIN|               ; 12 (11)           ; 17 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Definir_TIME:TEMPOMIN                                              ; work         ;
+;       |Divisor_Freq:DIV|                 ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Definir_TIME:TEMPOMIN|Divisor_Freq:DIV                             ; work         ;
+;    |Definir_TIME:TEMPOSEG|               ; 12 (11)           ; 17 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Definir_TIME:TEMPOSEG                                              ; work         ;
+;       |Divisor_Freq:DIV|                 ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Definir_TIME:TEMPOSEG|Divisor_Freq:DIV                             ; work         ;
+;    |Display_LCD:lCdzinho|                ; 192 (128)         ; 59 (59)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Display_LCD:lCdzinho                                               ; work         ;
+;       |conversor_LCD:conv_LCD|           ; 64 (20)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Display_LCD:lCdzinho|conversor_LCD:conv_LCD                        ; work         ;
+;          |conversor_ASCII:hora1c|        ; 11 (11)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:hora1c ; work         ;
+;          |conversor_ASCII:hora2c|        ; 11 (11)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:hora2c ; work         ;
+;          |conversor_ASCII:min1c|         ; 11 (11)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:min1c  ; work         ;
+;          |conversor_ASCII:min2c|         ; 11 (11)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:min2c  ; work         ;
+;    |Divisor_Freq:ClockAla|               ; 14 (14)           ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|Divisor_Freq:ClockAla                                              ; work         ;
+;    |display_7:HORAS2A|                   ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|display_7:HORAS2A                                                  ; work         ;
+;    |display_7:HORAS2|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|display_7:HORAS2                                                   ; work         ;
+;    |display_7:HORASA|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|display_7:HORASA                                                   ; work         ;
+;    |display_7:HORAS|                     ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|display_7:HORAS                                                    ; work         ;
+;    |display_7:MINUTOS2A|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|display_7:MINUTOS2A                                                ; work         ;
+;    |display_7:MINUTOS2|                  ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|display_7:MINUTOS2                                                 ; work         ;
+;    |display_7:MINUTOSA|                  ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|display_7:MINUTOSA                                                 ; work         ;
+;    |display_7:MINUTOS|                   ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|display_7:MINUTOS                                                  ; work         ;
+;    |display_7:SEGUNDOS2A|                ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|display_7:SEGUNDOS2A                                               ; work         ;
+;    |display_7:SEGUNDOS2|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|display_7:SEGUNDOS2                                                ; work         ;
+;    |display_7:SEGUNDOSA|                 ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|display_7:SEGUNDOSA                                                ; work         ;
+;    |display_7:SEGUNDOS|                  ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |RELOGAO|display_7:SEGUNDOS                                                 ; work         ;
++------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |RELOGAO|Display_LCD:lCdzinho|next_command                                                                                                                                                                                                                                                                                               ;
++----------------------------+----------------------------+--------------------------+---------------------+-------------------+---------------------+-------------------------+--------------------------+--------------------+---------------------------+-----------------------+-------------------------+-----------------------+---------------------+
+; Name                       ; next_command.DISPLAY_CLEAR ; next_command.DISPLAY_OFF ; next_command.RESET3 ; next_command.HOLD ; next_command.RESET1 ; next_command.DROP_LCD_E ; next_command.RETURN_HOME ; next_command.LINE2 ; next_command.Print_String ; next_command.MODE_SET ; next_command.DISPLAY_ON ; next_command.FUNC_SET ; next_command.RESET2 ;
++----------------------------+----------------------------+--------------------------+---------------------+-------------------+---------------------+-------------------------+--------------------------+--------------------+---------------------------+-----------------------+-------------------------+-----------------------+---------------------+
+; next_command.RESET2        ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 0                   ;
+; next_command.FUNC_SET      ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 1                     ; 1                   ;
+; next_command.DISPLAY_ON    ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 1                       ; 0                     ; 1                   ;
+; next_command.MODE_SET      ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 1                     ; 0                       ; 0                     ; 1                   ;
+; next_command.Print_String  ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 1                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.LINE2         ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 1                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.RETURN_HOME   ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 1                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.DROP_LCD_E    ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 1                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.RESET1        ; 0                          ; 0                        ; 0                   ; 0                 ; 1                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.HOLD          ; 0                          ; 0                        ; 0                   ; 1                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.RESET3        ; 0                          ; 0                        ; 1                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.DISPLAY_OFF   ; 0                          ; 1                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.DISPLAY_CLEAR ; 1                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
++----------------------------+----------------------------+--------------------------+---------------------+-------------------+---------------------+-------------------------+--------------------------+--------------------+---------------------------+-----------------------+-------------------------+-----------------------+---------------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |RELOGAO|Display_LCD:lCdzinho|state                                                                                                                                                                                                    ;
++---------------------+---------------------+-------------------+--------------+--------------+------------+------------------+-------------------+-------------+--------------------+----------------+------------------+----------------+--------------+
+; Name                ; state.DISPLAY_CLEAR ; state.DISPLAY_OFF ; state.RESET3 ; state.RESET2 ; state.HOLD ; state.DROP_LCD_E ; state.RETURN_HOME ; state.LINE2 ; state.Print_String ; state.MODE_SET ; state.DISPLAY_ON ; state.FUNC_SET ; state.RESET1 ;
++---------------------+---------------------+-------------------+--------------+--------------+------------+------------------+-------------------+-------------+--------------------+----------------+------------------+----------------+--------------+
+; state.RESET1        ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 0            ;
+; state.FUNC_SET      ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 1              ; 1            ;
+; state.DISPLAY_ON    ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 1                ; 0              ; 1            ;
+; state.MODE_SET      ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 1              ; 0                ; 0              ; 1            ;
+; state.Print_String  ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 1                  ; 0              ; 0                ; 0              ; 1            ;
+; state.LINE2         ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 1           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.RETURN_HOME   ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 1                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.DROP_LCD_E    ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 1                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.HOLD          ; 0                   ; 0                 ; 0            ; 0            ; 1          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.RESET2        ; 0                   ; 0                 ; 0            ; 1            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.RESET3        ; 0                   ; 0                 ; 1            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.DISPLAY_OFF   ; 0                   ; 1                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.DISPLAY_CLEAR ; 1                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
++---------------------+---------------------+-------------------+--------------+--------------+------------+------------------+-------------------+-------------+--------------------+----------------+------------------+----------------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                         ;
++------------------------------------------------------------------------------+---------------------+------------------------+
+; Latch Name                                                                   ; Latch Enable Signal ; Free of Timing Hazards ;
++------------------------------------------------------------------------------+---------------------+------------------------+
+; pisca                                                                        ; GND                 ; yes                    ;
+; ledAlarme                                                                    ; GND                 ; yes                    ;
+; salvarAlarme[0]                                                              ; pushAla             ; yes                    ;
+; salvarAlarme[1]                                                              ; pushAla             ; yes                    ;
+; salvarAlarme[2]                                                              ; pushAla             ; yes                    ;
+; salvarAlarme[3]                                                              ; pushAla             ; yes                    ;
+; salvarAlarme[4]                                                              ; pushAla             ; yes                    ;
+; salvarAlarme[5]                                                              ; pushAla             ; yes                    ;
+; salvarAlarme[6]                                                              ; pushAla             ; yes                    ;
+; salvarAlarme[7]                                                              ; pushAla             ; yes                    ;
+; salvarAlarme[8]                                                              ; pushAla             ; yes                    ;
+; salvarAlarme[9]                                                              ; pushAla             ; yes                    ;
+; salvarAlarme[10]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[11]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[12]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[13]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[14]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[15]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[16]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[17]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[18]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[19]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[20]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[21]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[22]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[23]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[24]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[25]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[26]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[27]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[28]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[29]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[30]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[31]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[32]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[33]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[34]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[35]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[36]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[37]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[38]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[39]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[40]                                                             ; pushAla             ; yes                    ;
+; salvarAlarme[41]                                                             ; pushAla             ; yes                    ;
+; seg1A[3]                                                                     ; alarme              ; yes                    ;
+; seg1A[2]                                                                     ; alarme              ; yes                    ;
+; seg1A[1]                                                                     ; alarme              ; yes                    ;
+; seg1A[0]                                                                     ; alarme              ; yes                    ;
+; seg2A[3]                                                                     ; alarme              ; yes                    ;
+; seg2A[2]                                                                     ; alarme              ; yes                    ;
+; seg2A[1]                                                                     ; alarme              ; yes                    ;
+; seg2A[0]                                                                     ; alarme              ; yes                    ;
+; min1A[0]                                                                     ; alarme              ; yes                    ;
+; min1A[3]                                                                     ; alarme              ; yes                    ;
+; min1A[1]                                                                     ; alarme              ; yes                    ;
+; min1A[2]                                                                     ; alarme              ; yes                    ;
+; min2A[2]                                                                     ; alarme              ; yes                    ;
+; min2A[3]                                                                     ; alarme              ; yes                    ;
+; min2A[1]                                                                     ; alarme              ; yes                    ;
+; min2A[0]                                                                     ; alarme              ; yes                    ;
+; hora1A[3]                                                                    ; alarme              ; yes                    ;
+; hora1A[2]                                                                    ; alarme              ; yes                    ;
+; hora1A[1]                                                                    ; alarme              ; yes                    ;
+; hora1A[0]                                                                    ; alarme              ; yes                    ;
+; hora2A[3]                                                                    ; alarme              ; yes                    ;
+; hora2A[2]                                                                    ; alarme              ; yes                    ;
+; hora2A[1]                                                                    ; alarme              ; yes                    ;
+; hora2A[0]                                                                    ; alarme              ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|tempo_bin[2]                     ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:min2c|coluna[2]  ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:hora2c|coluna[2] ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:hora1c|coluna[2] ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:min1c|coluna[2]  ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:min2c|coluna[1]  ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:hora2c|coluna[1] ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:hora1c|coluna[1] ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:min1c|coluna[1]  ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|tempo_bin[1]                     ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:hora2c|coluna[3] ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:hora1c|coluna[3] ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:min2c|coluna[3]  ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:min1c|coluna[3]  ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:hora2c|coluna[0] ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:hora1c|coluna[0] ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:min2c|coluna[0]  ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:min1c|coluna[0]  ; GND                 ; yes                    ;
+; Display_LCD:lCdzinho|conversor_LCD:conv_LCD|tempo_bin[0]                     ; GND                 ; yes                    ;
+; Number of user-specified and inferred latches = 87                           ;                     ;                        ;
++------------------------------------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                  ;
++-----------------------------------------------------+---------------------------------------------------------------+
+; Register name                                       ; Reason for Removal                                            ;
++-----------------------------------------------------+---------------------------------------------------------------+
+; Contador_Sincrono_Dividido:Contador|aux[1..31]      ; Stuck at GND due to stuck port data_in                        ;
+; Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[0,1] ; Stuck at GND due to stuck port data_in                        ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count0[0,1]  ; Stuck at GND due to stuck port data_in                        ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count0[0,1]  ; Stuck at GND due to stuck port data_in                        ;
+; Divisor_Freq:ClockAla|count0[0,1]                   ; Stuck at GND due to stuck port data_in                        ;
+; Display_LCD:lCdzinho|LCD_RW_INT                     ; Stuck at GND due to stuck port data_in                        ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count3[0]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[0] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count3[0]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[0] ;
+; Divisor_Freq:ClockAla|count3[0]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[0] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count3[1]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[1] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count3[1]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[1] ;
+; Divisor_Freq:ClockAla|count3[1]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[1] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count3[2]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[2] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count3[2]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[2] ;
+; Divisor_Freq:ClockAla|count3[2]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[2] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count3[3]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[3] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count3[3]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[3] ;
+; Divisor_Freq:ClockAla|count3[3]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[3] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count3[4]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[4] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count3[4]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[4] ;
+; Divisor_Freq:ClockAla|count3[4]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[4] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count3[5]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[5] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count3[5]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[5] ;
+; Divisor_Freq:ClockAla|count3[5]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[5] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count3[6]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[6] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count3[6]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[6] ;
+; Divisor_Freq:ClockAla|count3[6]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[6] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count3[7]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[7] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count3[7]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[7] ;
+; Divisor_Freq:ClockAla|count3[7]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[7] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count3[8]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[8] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count3[8]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[8] ;
+; Divisor_Freq:ClockAla|count3[8]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[8] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count3[9]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[9] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count3[9]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[9] ;
+; Divisor_Freq:ClockAla|count3[9]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[9] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count2[0]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[0] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count2[0]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[0] ;
+; Divisor_Freq:ClockAla|count2[0]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[0] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count2[1]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[1] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count2[1]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[1] ;
+; Divisor_Freq:ClockAla|count2[1]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[1] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count2[2]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[2] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count2[2]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[2] ;
+; Divisor_Freq:ClockAla|count2[2]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[2] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count2[3]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[3] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count2[3]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[3] ;
+; Divisor_Freq:ClockAla|count2[3]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[3] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count2[4]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[4] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count2[4]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[4] ;
+; Divisor_Freq:ClockAla|count2[4]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[4] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count2[5]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[5] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count2[5]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[5] ;
+; Divisor_Freq:ClockAla|count2[5]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[5] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count2[6]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[6] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count2[6]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[6] ;
+; Divisor_Freq:ClockAla|count2[6]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[6] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count2[7]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[7] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count2[7]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[7] ;
+; Divisor_Freq:ClockAla|count2[7]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[7] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count2[8]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[8] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count2[8]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[8] ;
+; Divisor_Freq:ClockAla|count2[8]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[8] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count2[9]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[9] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count2[9]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[9] ;
+; Divisor_Freq:ClockAla|count2[9]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[9] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count1[0]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[0] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count1[0]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[0] ;
+; Divisor_Freq:ClockAla|count1[0]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[0] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count1[1]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[1] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count1[1]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[1] ;
+; Divisor_Freq:ClockAla|count1[1]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[1] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count1[2]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[2] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count1[2]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[2] ;
+; Divisor_Freq:ClockAla|count1[2]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[2] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count1[3]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[3] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count1[3]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[3] ;
+; Divisor_Freq:ClockAla|count1[3]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[3] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count1[4]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[4] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count1[4]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[4] ;
+; Divisor_Freq:ClockAla|count1[4]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[4] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count1[5]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[5] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count1[5]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[5] ;
+; Divisor_Freq:ClockAla|count1[5]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[5] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count1[6]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[6] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count1[6]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[6] ;
+; Divisor_Freq:ClockAla|count1[6]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[6] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count1[7]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[7] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count1[7]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[7] ;
+; Divisor_Freq:ClockAla|count1[7]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[7] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count1[8]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[8] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count1[8]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[8] ;
+; Divisor_Freq:ClockAla|count1[8]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[8] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count1[9]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[9] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count1[9]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[9] ;
+; Divisor_Freq:ClockAla|count1[9]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[9] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count0[2]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[2] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count0[2]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[2] ;
+; Divisor_Freq:ClockAla|count0[2]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[2] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count0[3]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[3] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count0[3]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[3] ;
+; Divisor_Freq:ClockAla|count0[3]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[3] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count0[4]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[4] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count0[4]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[4] ;
+; Divisor_Freq:ClockAla|count0[4]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[4] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count0[5]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[5] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count0[5]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[5] ;
+; Divisor_Freq:ClockAla|count0[5]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[5] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count0[6]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[6] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count0[6]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[6] ;
+; Divisor_Freq:ClockAla|count0[6]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[6] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count0[7]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[7] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count0[7]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[7] ;
+; Divisor_Freq:ClockAla|count0[7]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[7] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count0[8]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[8] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count0[8]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[8] ;
+; Divisor_Freq:ClockAla|count0[8]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[8] ;
+; Definir_TIME:TEMPOMIN|Divisor_Freq:DIV|count0[9]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[9] ;
+; Definir_TIME:TEMPOSEG|Divisor_Freq:DIV|count0[9]    ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[9] ;
+; Divisor_Freq:ClockAla|count0[9]                     ; Merged with Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count0[9] ;
+; tempos[3..9,11..31]                                 ; Merged with tempos[10]                                        ;
+; Display_LCD:lCdzinho|next_command.HOLD              ; Merged with Display_LCD:lCdzinho|next_command.DROP_LCD_E      ;
+; Display_LCD:lCdzinho|next_command.RESET1            ; Merged with Display_LCD:lCdzinho|next_command.DROP_LCD_E      ;
+; Display_LCD:lCdzinho|next_command.DROP_LCD_E        ; Stuck at GND due to stuck port data_in                        ;
+; Total Number of Removed Registers = 185             ;                                                               ;
++-----------------------------------------------------+---------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 243   ;
+; Number of registers using Synchronous Clear  ; 98    ;
+; Number of registers using Synchronous Load   ; 5     ;
+; Number of registers using Asynchronous Clear ; 130   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 185   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; Display_LCD:lCdzinho|LCD_E             ; 2       ;
+; Display_LCD:lCdzinho|DATA_BUS_VALUE[3] ; 2       ;
+; Display_LCD:lCdzinho|DATA_BUS_VALUE[4] ; 1       ;
+; Display_LCD:lCdzinho|DATA_BUS_VALUE[5] ; 1       ;
+; Total number of inverted registers = 4 ;         ;
++----------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RELOGAO|Definir_TIME:TEMPOHORA|B[0]                                        ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RELOGAO|Definir_TIME:TEMPOHORA|A[1]                                        ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |RELOGAO|Display_LCD:lCdzinho|CLK_COUNT_400HZ[10]                           ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |RELOGAO|Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count1[5]                  ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |RELOGAO|Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count2[1]                  ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |RELOGAO|Definir_TIME:TEMPOHORA|Divisor_Freq:DIV|count3[6]                  ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |RELOGAO|Contador_Sincrono_Dividido:Contador|Divisor_Freq:Divisor|count1[0] ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |RELOGAO|Contador_Sincrono_Dividido:Contador|Divisor_Freq:Divisor|count2[0] ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |RELOGAO|Contador_Sincrono_Dividido:Contador|Divisor_Freq:Divisor|count3[5] ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 9 LEs                ; 6 LEs                  ; Yes        ; |RELOGAO|tempos[2]                                                          ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RELOGAO|Contador_Sincrono_Dividido:Contador|A[1]                           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |RELOGAO|Contador_Sincrono_Dividido:Contador|B[1]                           ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |RELOGAO|Contador_Sincrono_Dividido:Contador|C[0]                           ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |RELOGAO|Display_LCD:lCdzinho|DATA_BUS_VALUE[5]                             ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |RELOGAO|Contador_Sincrono_Dividido:Contador|D[3]                           ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |RELOGAO|Contador_Sincrono_Dividido:Contador|F[1]                           ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |RELOGAO|Contador_Sincrono_Dividido:Contador|E[3]                           ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |RELOGAO|Display_LCD:lCdzinho|state                                         ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |RELOGAO|Display_LCD:lCdzinho|next_command                                  ;
+; 29:1               ; 2 bits    ; 38 LEs        ; 4 LEs                ; 34 LEs                 ; No         ; |RELOGAO|display5s[3]                                                       ;
+; 33:1               ; 2 bits    ; 44 LEs        ; 34 LEs               ; 10 LEs                 ; No         ; |RELOGAO|display4s[1]                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Display_LCD:lCdzinho ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; Num_Hex_Digits ; 1     ; Signed Integer                           ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Contador_Sincrono_Dividido:Contador|Divisor_Freq:Divisor" ;
++------+-------+----------+------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                    ;
++------+-------+----------+------------------------------------------------------------+
+; sel  ; Input ; Info     ; Stuck at GND                                               ;
++------+-------+----------+------------------------------------------------------------+
+
+
++----------------------------------------------------+
+; Port Connectivity Checks: "Definir_TIME:TEMPOHORA" ;
++------+-------+----------+--------------------------+
+; Port ; Type  ; Severity ; Details                  ;
++------+-------+----------+--------------------------+
+; sel  ; Input ; Info     ; Stuck at VCC             ;
++------+-------+----------+--------------------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "Definir_TIME:TEMPOMIN" ;
++------+-------+----------+-------------------------+
+; Port ; Type  ; Severity ; Details                 ;
++------+-------+----------+-------------------------+
+; sel  ; Input ; Info     ; Stuck at GND            ;
++------+-------+----------+-------------------------+
+
+
++--------------------------------------------------------------------+
+; Port Connectivity Checks: "Definir_TIME:TEMPOSEG|Divisor_Freq:DIV" ;
++------+-------+----------+------------------------------------------+
+; Port ; Type  ; Severity ; Details                                  ;
++------+-------+----------+------------------------------------------+
+; sel  ; Input ; Info     ; Stuck at VCC                             ;
++------+-------+----------+------------------------------------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "Definir_TIME:TEMPOSEG" ;
++------+-------+----------+-------------------------+
+; Port ; Type  ; Severity ; Details                 ;
++------+-------+----------+-------------------------+
+; sel  ; Input ; Info     ; Stuck at GND            ;
++------+-------+----------+-------------------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "Divisor_Freq:ClockAla" ;
++------+-------+----------+-------------------------+
+; Port ; Type  ; Severity ; Details                 ;
++------+-------+----------+-------------------------+
+; sel  ; Input ; Info     ; Stuck at VCC            ;
++------+-------+----------+-------------------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:GMT" ;
++--------+-------+----------+-----------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                         ;
++--------+-------+----------+-----------------------------------------------------------------+
+; num[3] ; Input ; Info     ; Stuck at GND                                                    ;
++--------+-------+----------+-----------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Thu Jul 26 14:00:35 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RELOGAO -c RELOGAO
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file definir_time.vhd
+    Info (12022): Found design unit 1: Definir_TIME-arc_Definir_TIME
+    Info (12023): Found entity 1: Definir_TIME
+Info (12021): Found 2 design units, including 1 entities, in source file relogao.vhd
+    Info (12022): Found design unit 1: RELOGAO-arch_Reloginho
+    Info (12023): Found entity 1: RELOGAO
+Info (12021): Found 2 design units, including 1 entities, in source file divisor_freq.vhd
+    Info (12022): Found design unit 1: Divisor_Freq-arc_Divider
+    Info (12023): Found entity 1: Divisor_Freq
+Info (12021): Found 2 design units, including 1 entities, in source file display_7.vhd
+    Info (12022): Found design unit 1: display_7-arch_display_7
+    Info (12023): Found entity 1: display_7
+Info (12021): Found 2 design units, including 1 entities, in source file contador_sincrono_dividido.vhd
+    Info (12022): Found design unit 1: Contador_Sincrono_Dividido-arch_Contador_Sincrono_Dividido
+    Info (12023): Found entity 1: Contador_Sincrono_Dividido
+Warning (12019): Can't analyze file -- file mudarGMT.vhd is missing
+Info (12127): Elaborating entity "RELOGAO" for the top level hierarchy
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(136): signal "seg1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(137): signal "seg2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(138): signal "min1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(139): signal "min2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(140): signal "hora1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(141): signal "hora2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(142): signal "SaidaS1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(144): signal "SaidaS1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(148): signal "SaidaS2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(152): signal "ledAlarme" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(152): signal "salvarAlarme" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(152): signal "SaidaS1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(155): signal "pisca" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(160): signal "pisca" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(165): signal "para" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(170): signal "ledAlarme" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at RELOGAO.vhd(123): inferring latch(es) for signal or variable "ledAlarme", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at RELOGAO.vhd(123): inferring latch(es) for signal or variable "pisca", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at RELOGAO.vhd(123): inferring latch(es) for signal or variable "seg1A", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at RELOGAO.vhd(123): inferring latch(es) for signal or variable "seg2A", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at RELOGAO.vhd(123): inferring latch(es) for signal or variable "min1A", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at RELOGAO.vhd(123): inferring latch(es) for signal or variable "min2A", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at RELOGAO.vhd(123): inferring latch(es) for signal or variable "hora1A", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at RELOGAO.vhd(123): inferring latch(es) for signal or variable "hora2A", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at RELOGAO.vhd(123): inferring latch(es) for signal or variable "salvarAlarme", which holds its previous value in one or more paths through the process
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(178): signal "VERAOUNAO" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(179): signal "tempos" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RELOGAO.vhd(181): signal "tempos" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (10041): Inferred latch for "salvarAlarme[0]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[1]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[2]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[3]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[4]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[5]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[6]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[7]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[8]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[9]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[10]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[11]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[12]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[13]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[14]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[15]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[16]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[17]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[18]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[19]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[20]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[21]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[22]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[23]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[24]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[25]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[26]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[27]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[28]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[29]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[30]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[31]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[32]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[33]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[34]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[35]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[36]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[37]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[38]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[39]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[40]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "salvarAlarme[41]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "hora2A[0]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "hora2A[1]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "hora2A[2]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "hora2A[3]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "hora1A[0]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "hora1A[1]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "hora1A[2]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "hora1A[3]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "min2A[0]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "min2A[1]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "min2A[2]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "min2A[3]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "min1A[0]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "min1A[1]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "min1A[2]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "min1A[3]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "seg2A[0]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "seg2A[1]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "seg2A[2]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "seg2A[3]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "seg1A[0]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "seg1A[1]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "seg1A[2]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "seg1A[3]" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "pisca" at RELOGAO.vhd(123)
+Info (10041): Inferred latch for "ledAlarme" at RELOGAO.vhd(123)
+Warning (12125): Using design file display_lcd.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: Display_LCD-Behavior
+    Info (12023): Found entity 1: Display_LCD
+Info (12128): Elaborating entity "Display_LCD" for hierarchy "Display_LCD:lCdzinho"
+Warning (12125): Using design file conversor_lcd.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: conversor_LCD-Behavioral
+    Info (12023): Found entity 1: conversor_LCD
+Info (12128): Elaborating entity "conversor_LCD" for hierarchy "Display_LCD:lCdzinho|conversor_LCD:conv_LCD"
+Info (10041): Inferred latch for "tempo_bin[0]" at conversor_lcd.vhd(122)
+Info (10041): Inferred latch for "tempo_bin[1]" at conversor_lcd.vhd(122)
+Info (10041): Inferred latch for "tempo_bin[2]" at conversor_lcd.vhd(122)
+Info (10041): Inferred latch for "tempo_bin[3]" at conversor_lcd.vhd(122)
+Warning (12125): Using design file conversor_ascii.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: conversor_ASCII-arch_conversor_ASCII
+    Info (12023): Found entity 1: conversor_ASCII
+Info (12128): Elaborating entity "conversor_ASCII" for hierarchy "Display_LCD:lCdzinho|conversor_LCD:conv_LCD|conversor_ASCII:min1c"
+Info (10041): Inferred latch for "coluna[0]" at conversor_ascii.vhd(29)
+Info (10041): Inferred latch for "coluna[1]" at conversor_ascii.vhd(29)
+Info (10041): Inferred latch for "coluna[2]" at conversor_ascii.vhd(29)
+Info (10041): Inferred latch for "coluna[3]" at conversor_ascii.vhd(29)
+Info (10041): Inferred latch for "linha[0]" at conversor_ascii.vhd(17)
+Info (10041): Inferred latch for "linha[1]" at conversor_ascii.vhd(17)
+Info (10041): Inferred latch for "linha[2]" at conversor_ascii.vhd(17)
+Info (10041): Inferred latch for "linha[3]" at conversor_ascii.vhd(17)
+Info (12128): Elaborating entity "Divisor_Freq" for hierarchy "Divisor_Freq:ClockAla"
+Warning (10492): VHDL Process Statement warning at Divisor_Freq.vhd(53): signal "D" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "Definir_TIME" for hierarchy "Definir_TIME:TEMPOSEG"
+Info (12128): Elaborating entity "Contador_Sincrono_Dividido" for hierarchy "Contador_Sincrono_Dividido:Contador"
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(45): signal "comeco" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(46): signal "Ain" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(47): signal "Bin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(48): signal "Cin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(49): signal "Din" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(50): signal "Ein" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(51): signal "Fin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(52): signal "Ain" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(53): signal "Bin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(54): signal "Cin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(55): signal "Din" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(56): signal "Ein" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(57): signal "Fin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Contador_Sincrono_Dividido.vhd(60): signal "comeco" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "display_7" for hierarchy "display_7:SEGUNDOS"
+Info (10041): Inferred latch for "S[0]" at display_7.vhd(13)
+Info (10041): Inferred latch for "S[1]" at display_7.vhd(13)
+Info (10041): Inferred latch for "S[2]" at display_7.vhd(13)
+Info (10041): Inferred latch for "S[3]" at display_7.vhd(13)
+Info (10041): Inferred latch for "S[4]" at display_7.vhd(13)
+Info (10041): Inferred latch for "S[5]" at display_7.vhd(13)
+Info (10041): Inferred latch for "S[6]" at display_7.vhd(13)
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q0[0]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q0[0]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q0[0]~1"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q0[1]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q0[1]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q0[1]~5"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q0[2]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q0[2]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q0[2]~9"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q0[3]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q0[3]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q0[3]~13"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q1[0]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q1[0]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q1[0]~1"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q1[1]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q1[1]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q1[1]~5"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q1[2]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q1[2]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q1[2]~9"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q1[3]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q1[3]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q1[3]~13"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q2[0]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q2[0]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q2[0]~1"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q2[1]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q2[1]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q2[1]~5"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q2[2]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q2[2]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q2[2]~9"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q2[3]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q2[3]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q2[3]~13"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q3[0]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q3[0]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q3[0]~1"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q3[1]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q3[1]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q3[1]~5"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q3[2]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q3[2]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q3[2]~9"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q3[3]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q3[3]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q3[3]~13"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q4[0]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q4[0]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q4[0]~1"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q4[1]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q4[1]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q4[1]~5"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q4[2]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q4[2]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q4[2]~9"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q4[3]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q4[3]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q4[3]~13"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q5[3]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q5[3]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q5[3]~1"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q5[2]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q5[2]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q5[2]~5"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q5[1]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q5[1]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q5[1]~9"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|Q5[0]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|Q5[0]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|Q5[0]~13"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|A[0]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|A[0]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|A[0]~1"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|A[1]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|A[1]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|A[1]~6"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|A[2]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|A[2]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|A[2]~11"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|A[3]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|A[3]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|A[3]~16"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|B[0]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|B[0]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|B[0]~1"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|B[1]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|B[1]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|B[1]~6"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|B[2]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|B[2]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|B[2]~11"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|B[3]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|B[3]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|B[3]~16"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|C[0]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|C[0]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|C[0]~1"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|C[1]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|C[1]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|C[1]~6"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|C[2]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|C[2]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|C[2]~11"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|C[3]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|C[3]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|C[3]~16"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|D[0]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|D[0]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|D[0]~1"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|D[1]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|D[1]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|D[1]~6"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|D[2]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|D[2]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|D[2]~11"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|D[3]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|D[3]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|D[3]~16"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|E[0]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|E[0]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|E[0]~1"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|E[1]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|E[1]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|E[1]~6"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|E[2]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|E[2]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|E[2]~11"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|E[3]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|E[3]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|E[3]~16"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|F[3]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|F[3]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|F[3]~1"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|F[2]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|F[2]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|F[2]~6"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|F[1]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|F[1]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|F[1]~11"
+    Warning (13310): Register "Contador_Sincrono_Dividido:Contador|F[0]" is converted into an equivalent circuit using register "Contador_Sincrono_Dividido:Contador|F[0]~_emulated" and latch "Contador_Sincrono_Dividido:Contador|F[0]~16"
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "Display_LCD:lCdzinho|DATA_BUS[0]~synth"
+    Warning (13010): Node "Display_LCD:lCdzinho|DATA_BUS[1]~synth"
+    Warning (13010): Node "Display_LCD:lCdzinho|DATA_BUS[2]~synth"
+    Warning (13010): Node "Display_LCD:lCdzinho|DATA_BUS[3]~synth"
+    Warning (13010): Node "Display_LCD:lCdzinho|DATA_BUS[4]~synth"
+    Warning (13010): Node "Display_LCD:lCdzinho|DATA_BUS[5]~synth"
+    Warning (13010): Node "Display_LCD:lCdzinho|DATA_BUS[6]~synth"
+    Warning (13010): Node "Display_LCD:lCdzinho|DATA_BUS[7]~synth"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "Saida[42]" is stuck at VCC
+    Warning (13410): Pin "Saida[43]" is stuck at VCC
+    Warning (13410): Pin "Saida[44]" is stuck at VCC
+    Warning (13410): Pin "Saida[45]" is stuck at VCC
+    Warning (13410): Pin "Saida[46]" is stuck at VCC
+    Warning (13410): Pin "Saida[47]" is stuck at VCC
+    Warning (13410): Pin "Saida[48]" is stuck at VCC
+    Warning (13410): Pin "Saida[49]" is stuck at VCC
+    Warning (13410): Pin "Saida[50]" is stuck at VCC
+    Warning (13410): Pin "Saida[51]" is stuck at VCC
+    Warning (13410): Pin "Saida[52]" is stuck at VCC
+    Warning (13410): Pin "Saida[53]" is stuck at VCC
+    Warning (13410): Pin "Saida[54]" is stuck at VCC
+    Warning (13410): Pin "Saida[55]" is stuck at VCC
+    Warning (13410): Pin "LCD_RW" is stuck at GND
+    Warning (13410): Pin "LCD_ON" is stuck at VCC
+    Warning (13410): Pin "LCD_BLON" is stuck at GND
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SegAla"
+    Warning (15610): No output dependent on input pin "MinAla"
+    Warning (15610): No output dependent on input pin "HorAla"
+Info (21057): Implemented 1005 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 17 input pins
+    Info (21059): Implemented 81 output pins
+    Info (21060): Implemented 8 bidirectional pins
+    Info (21061): Implemented 899 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 128 warnings
+    Info: Peak virtual memory: 4673 megabytes
+    Info: Processing ended: Thu Jul 26 14:00:39 2018
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:03
+
+
